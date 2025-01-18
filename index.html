@@ -4,47 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Pública</title>
-    <style>
-        body { font-family: Arial, sans-serif; }
-        #loginForm { display: none; }
-        #loginButton { margin-top: 20px; }
-    </style>
+    <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-    <h1>Bienvenido a la Página Pública</h1>
-    <button id="showLogin">Iniciar Sesión</button>
+    <header class="nav">
+    <div class="navbar">
+        <img src="/assets/Images/Valhalla_logo.png" alt="" class="logo">
+        <div>
+            <a href="#about">About</a>
+            <a href="#instalaciones">Instalaciones</a>
+            <a href="#programa_de_entrenamiento">Programa de Entrenamiento</a>
+        </div>
+        <button id="showLogin">Iniciar Sesión</button>
+    </div>
     
     <div id="loginForm">
         <h2>Formulario de Inicio de Sesión</h2>
         <input type="text" id="username" placeholder="Usuario" required>
-        <input type="password" id="password" placeholder="Contraseña" required>
+        <div class="password-container">
+            <input type="password" id="password" placeholder="Contraseña" required>
+            <span class="toggle-password" onclick="togglePassword()">👁️</span>
+        </div>
         <button id="loginButton">Iniciar Sesión</button>
     </div>
 
     <div id="redirectButton" style="display:none;">
         <button onclick="window.location.href='private.html'">Ir al Gym</button>
     </div>
-
-    <script>
-        document.getElementById('showLogin').onclick = function() {
-            document.getElementById('loginForm').style.display = 'block';
-        };
-
-        document.getElementById('loginButton').onclick = function() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-
-            fetch('credentials.json')
-                .then(response => response.json())
-                .then(data => {
-                    const user = data.users.find(user => user.username === username && user.password === password);
-                    if (user) {
-                        document.getElementById('redirectButton').style.display = 'block';
-                    } else {
-                        alert('Credenciales incorrectas');
-                    }
-                });
-        };
-    </script>
+</header>
+<section class="home"></section>
+<section class="about"></section>
+<section class="training"></section>
+    <script src="assets/script.js"></script>
 </body>
 </html>
