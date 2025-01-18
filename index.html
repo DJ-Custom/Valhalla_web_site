@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Pública</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        #loginForm { display: none; }
+        #loginButton { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Bienvenido a la Página Pública</h1>
+    <button id="showLogin">Iniciar Sesión</button>
+    
+    <div id="loginForm">
+        <h2>Formulario de Inicio de Sesión</h2>
+        <input type="text" id="username" placeholder="Usuario" required>
+        <input type="password" id="password" placeholder="Contraseña" required>
+        <button id="loginButton">Iniciar Sesión</button>
+    </div>
+
+    <div id="redirectButton" style="display:none;">
+        <button onclick="window.location.href='private.html'">Ir al Gym</button>
+    </div>
+
+    <script>
+        document.getElementById('showLogin').onclick = function() {
+            document.getElementById('loginForm').style.display = 'block';
+        };
+
+        document.getElementById('loginButton').onclick = function() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            fetch('credentials.json')
+                .then(response => response.json())
+                .then(data => {
+                    const user = data.users.find(user => user.username === username && user.password === password);
+                    if (user) {
+                        document.getElementById('redirectButton').style.display = 'block';
+                    } else {
+                        alert('Credenciales incorrectas');
+                    }
+                });
+        };
+    </script>
+</body>
+</html>
