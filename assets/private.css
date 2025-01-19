@@ -1,0 +1,44 @@
+/* Estilos específicos para private.html */
+body {
+    font-family: 'Lexend', sans-serif;
+    background-color: #f4f4f4; /* Color de fondo similar a index.html */
+    color: #333; /* Color de texto */
+    margin: 0;
+    padding: 20px;
+}
+
+.nav {
+    background-color: #fff; /* Color de fondo del navbar */
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav .navbar .logo {
+    height: 50px; /* Ajustar el tamaño del logo */
+}
+
+#comments-section {
+    background-color: #fff; /* Fondo blanco para la sección de comentarios */
+    color: #333; /* Color de texto */
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+#comments-list {
+    margin-top: 20px;
+    min-height: 300px; /* Set a max height for the comments list */
+    overflow-y: auto; /* Enable vertical scrolling */
+    border: 2px solid black;
+}
+
+.comment {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+}

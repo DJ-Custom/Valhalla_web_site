@@ -19,7 +19,7 @@ document.getElementById('loginButton').onclick = function(event) {
             const user = data.users.find(user => user.username === username && user.password === password);
             if (user) {
                 // Redirect to private.html if credentials are correct
-                window.location.href = 'private.html';
+                window.location.href = 'private_final.html';
             } else {
                 showCustomAlert('Credenciales incorrectas');
             }
@@ -52,3 +52,98 @@ function togglePassword() {
     passwordInput.setAttribute('type', type);
     document.querySelector('.toggle-password').textContent = type === 'password' ? '👁️' : '🙈';
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const commentForm = document.getElementById('comment-form');
+    const commentsList = document.getElementById('comments-list');
+    const loadMoreButton = document.getElementById('load-more');
+    const loadLessButton = document.getElementById('load-less');
+    const filterSelect = document.getElementById('filter');
+
+    let comments = [];
+    let displayedCommentsCount = 0;
+    const increment = 6; // Number of comments to load at a time
+
+    // Cargar comentarios desde el archivo JSON
+    function loadComments() {
+        fetch('comments.json')
+            .then(response => response.json())
+            .then(data => {
+                comments = data; // Store all comments
+                displayComments();
+            });
+    }
+
+    // Mostrar comentarios en la lista
+    function displayComments() {
+        commentsList.innerHTML = '';
+        const commentsToDisplay = comments.slice(0, displayedCommentsCount);
+        commentsToDisplay.forEach(comment => {
+            const commentDiv = document.createElement('div');
+            commentDiv.classList.add('comment');
+            commentDiv.innerHTML = `<strong style="color: ${getRandomColor()}">${comment.username}</strong> 
+                                    <span style="float: right;">${comment.date}</span>
+                                    <p>${comment.text}</p>`;
+            commentsList.appendChild(commentDiv);
+        });
+
+        // Toggle button visibility
+        loadLessButton.style.display = displayedCommentsCount > increment ? 'block' : 'none';
+        loadMoreButton.style.display = displayedCommentsCount < comments.length ? 'block' : 'none';
+    }
+
+    // Obtener un color aleatorio para el nombre del usuario
+    function getRandomColor() {
+        const colors = ['#FF5733', '#33FF57', '#3357FF', '#FF33A1', '#FFBD33'];
+        return colors[Math.floor(Math.random() * colors.length)];
+    }
+
+    // Manejar el envío del formulario
+    commentForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const username = document.getElementById('username').value; // Get username from hidden input
+        const commentText = document.getElementById('comment').value;
+        const date = new Date().toLocaleString();
+
+        const newComment = { username, text: commentText, date };
+        console.log('New Comment:', newComment); // Log the new comment
+
+        // Save the new comment in the comments array
+        fetch('comments.json', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newComment)
+        })
+        .then(response => {
+            if (response.ok) {
+                comments.push(newComment); // Add to local comments array
+                displayComments(); // Update the display immediately
+                commentForm.reset(); // Reset the form
+            } else {
+                showCustomAlert('Error al guardar el comentario');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            showCustomAlert('Error al guardar el comentario');
+        });
+    });
+
+    // Load more comments
+    loadMoreButton.addEventListener('click', () => {
+        displayedCommentsCount += increment;
+        displayComments();
+    });
+
+    // Load less comments
+    loadLessButton.addEventListener('click', () => {
+        displayedCommentsCount = Math.max(0, displayedCommentsCount - increment);
+        displayComments();
+    });
+
+    // Cargar comentarios al inicio
+    displayedCommentsCount = increment; // Start with the first increment of comments
+    loadComments();
+});

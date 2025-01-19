@@ -15,14 +15,12 @@
     <section id="comments-section">
         <h2>Comentarios</h2>
         <form id="comment-form">
-            <input type="hidden" id="username" value="Usuario"> <!-- Hidden input for username -->
+            <input type="text" id="username" placeholder="Nombre de usuario" required>
             <textarea id="comment" placeholder="Escribe tu comentario..." required></textarea>
             <button type="submit">Publicar Comentario</button>
         </form>
         <div id="comments-list"></div>
-        <button id="load-more">Cargar más</button>
-        <button id="load-less" style="display: none;">Cargar menos</button>
     </section>
-    <script src="assets/script.js"></script>
+    <script src="assets/comments_script.js"></script>
 </body>
 </html>
