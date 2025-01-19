@@ -1,7 +1,6 @@
-:root{
+root{
   --primary-color: rgb(230, 215, 18);
   --secondary-color: #141414;
-  --font-family: "Staatliches", serif;
 }
 *{
     margin: 0;
@@ -11,9 +10,6 @@ body { font-family: Arial, sans-serif; margin: 0; }
 
 /*Navbar*/
 form {
-  align-items: center;
-  justify-items: center;
-  justify-content: center;
 }
 .nav {
     background-color: #000000;
@@ -24,21 +20,13 @@ form {
     height: 6rem;
     z-index: 1000;
 }
-.nav input {
-  background: var(--secondary-color);
-  border: none;
-  color:white;
-  padding: 12px;
-  text-align: center;
-  margin: 1rem;
-  margin-right: 0;
-}
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
     color: white;
+
 }
 .navbar a {
     color: white;
@@ -55,7 +43,7 @@ form {
 .navbar .logo {
   margin-top: 0.5rem;
     width: 75px;
-    filter: drop-shadow(0 0 15px rgb(136, 136, 136));
+    filter: drop-shadow(0 0 23px rgb(192, 192, 192));
 }
 #showLogin {
   background: var(--primary-color);
@@ -63,53 +51,34 @@ form {
   padding: 12px;
   margin-right: 2rem;
   margin-top: 1rem;
-  transition: ease .3S;
-}
-#showLogin:hover {
-  cursor: pointer;
-  transform: scale(1.1);
-  box-shadow: 1px 1px 10px rgb(109, 107, 10);
-  background: black;
-  color: var(--primary-color);
 }
 #loginForm { 
-  justify-content: center;
-  justify-items: center;
-  align-items: center;
     display: none; 
     position: absolute; 
     z-index: 2000; 
     width: 100%;
-    background: rgba(230, 215, 18, 0.2);
+    background: rgba(230, 215, 18, 0.6);
 }
-#loginForm h2{
-  color: var(--secondary-color);
+
+#loginForm::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit; /* Use the same background as the form */
+    filter: blur(5px);
+    z-index: -1; /* Place it behind the content */
 }
-#loginButton, .priv_btn { 
-  padding: 12px;
-  margin-bottom: 1rem;
-  margin-left: 1.1rem;
-  background-color: var(--secondary-color);
-  color: var(--primary-color);
-  border: none;
-  transition: ease .3S;
-}
-#loginButton:hover, .priv_btn:hover {
-  cursor: pointer;
-  transform: scale(1.1);
-  box-shadow: 2px 2px 10px rgb(0, 0, 0);
-}
+
+#loginButton { margin-top: 20px; }
 .password-container { position: relative; }
 .toggle-password { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; }
 .loginForm{
     z-index: 50;
 }
 @media (max-width: 600px){
-  form {
-    align-items: center;
-    justify-items: center;
-    justify-content: center;
-  }
 #showLogin {
   padding: 7px 10px;
   margin-right: 0.2rem;
@@ -141,7 +110,7 @@ section{
     height: 100vh;
     margin: 0;
     background-color: #161616;
-    background-image: url("data:image/svg+xml,%3Csvg width='50' height='50' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20.5V18H0v-2h20v-2H0v-2h20v-2H0V8h20V6H0V4h20V2H0V0h22v20h2V0h2v20h2V0h2v20h2V0h2v20h2V0h2v20h2v2H20v-1.5zM0 20h2v20H0V20zm4 0h2v20H4V20zm4 0h2v20H8V20zm4 0h2v20h-2V20zm4 0h2v20h-2V20zm4 4h20v2H20v-2zm0 4h20v2H20v-2zm0 4h20v2H20v-2zm0 4h20v2H20v-2z' fill='%23383838' fill-opacity='0.24' fill-rule='evenodd'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg width='50' height='50' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20.5V18H0v-2h20v-2H0v-2h20v-2H0V8h20V6H0V4h20V2H0V0h22v20h2V0h2v20h2V0h2v20h2V0h2v20h2v2H20v-1.5zM0 20h2v20H0V20zm4 0h2v20H4V20zm4 0h2v20H8V20zm4 0h2v20h-2V20zm4 0h2v20h-2V20zm4 4h20v2H20v-2zm0 4h20v2H20v-2zm0 4h20v2H20v-2zm0 4h20v2H20v-2z' fill='%23383838' fill-opacity='0.24' fill-rule='evenodd'/%3E%3C/svg%3E");
 }
 h2{
   padding-top: 3rem;
@@ -183,7 +152,6 @@ h2{
   color: var(--primary-color);
   margin-left: 3rem;
   letter-spacing: 4px;
-  font-style: italic;
   /* -webkit-animation: text-flicker-in-glow 4s linear both;
   animation: text-flicker-in-glow 4s linear both; */
 }
@@ -194,131 +162,6 @@ h2{
   }
 }
 @-webkit-keyframes text-flicker-in-glow {
-    0% {
-      opacity: 0;
-    }
-    10% {
-      opacity: 0;
-      text-shadow: none;
-    }
-    10.1% {
-      opacity: 1;
-      text-shadow: none;
-    }
-    10.2% {
-      opacity: 0;
-      text-shadow: none;
-    }
-    20% {
-      opacity: 0;
-      text-shadow: none;
-    }
-    20.1% {
-      opacity: 1;
-      text-shadow: 0 0 30px rgba(37, 36, 17, 0.25);
-    }
-    20.6% {
-      opacity: 0;
-      text-shadow: none;
-    }
-    30% {
-      opacity: 0;
-      text-shadow: none;
-    }
-    30.1% {
-      opacity: 1;
-      text-shadow: 0 0 30px rgba(37, 36, 17, 0.45), 0 0 60px rgba(37, 36, 17, 0.25);
-    }
-    30.5% {
-      opacity: 1;
-      text-shadow: 0 0 30px rgba(37, 36, 17, 0.45), 0 0 60px rgba(37, 36, 17, 0.25);
-    }
-    30.6% {
-      opacity: 0;
-      text-shadow: none;
-    }
-    45% {
-      opacity: 0;
-      text-shadow: none;
-    }
-    45.1% {
-      opacity: 1;
-      text-shadow: 0 0 30px rgba(37, 36, 17, 0.45), 0 0 60px rgba(37, 36, 17, 0.25);
-    }
-    50% {
-      opacity: 1;
-      text-shadow: 0 0 30px rgba(37, 36, 17, 0.45), 0 0 60px rgba(37, 36, 17, 0.25);
-    }
-    55% {
-      opacity: 1;
-      text-shadow: 0 0 30px rgba(37, 36, 17, 0.45), 0 0 60px rgba(37, 36, 17, 0.25);
-    }
-    55.1% {
-      opacity: 0;
-      text-shadow: none;
-    }
-    57% {
-      opacity: 0;
-      text-shadow: none;
-    }
-    57.1% {
-      opacity: 1;
-      text-shadow: 0 0 30px rgba(37, 36, 17, 0.55), 0 0 60px rgba(37, 36, 17, 0.35);
-    }
-    60% {
-      opacity: 1;
-      text-shadow: 0 0 30px rgba(37, 36, 17, 0.55), 0 0 60px rgba(37, 36, 17, 0.35);
-    }
-    60.1% {
-      opacity: 0;
-      text-shadow: none;
-    }
-    65% {
-      opacity: 0;
-      text-shadow: none;
-    }
-    65.1% {
-      opacity: 1;
-      text-shadow: 0 0 30px rgba(37, 36, 17, 0.55), 0 0 60px rgba(37, 36, 17, 0.35), 0 0 100px rgba(37, 36, 17, 0.1);
-    }
-    75% {
-      opacity: 1;
-      text-shadow: 0 0 30px rgba(37, 36, 17, 0.55), 0 0 60px rgba(37, 36, 17, 0.35), 0 0 100px rgba(37, 36, 17, 0.1);
-    }
-    75.1% {
-      opacity: 0;
-      text-shadow: none;
-    }
-    77% {
-      opacity: 0;
-      text-shadow: none;
-    }
-    77.1% {
-      opacity: 1;
-      text-shadow: 0 0 30px rgba(37, 36, 17, 0.55), 0 0 60px rgba(37, 36, 17, 0.4), 0 0 110px rgba(37, 36, 17, 0.2), 0 0 100px rgba(37, 36, 17, 0.1);
-    }
-    85% {
-      opacity: 1;
-      text-shadow: 0 0 30px rgba(37, 36, 17, 0.55), 0 0 60px rgba(37, 36, 17, 0.4), 0 0 110px rgba(37, 36, 17, 0.2), 0 0 100px rgba(37, 36, 17, 0.1);
-    }
-    85.1% {
-      opacity: 0;
-      text-shadow: none;
-    }
-    86% {
-      opacity: 0;
-      text-shadow: none;
-    }
-    86.1% {
-      opacity: 1;
-      text-shadow: 0 0 30px rgba(37, 36, 17, 0.6), 0 0 60px rgba(37, 36, 17, 0.45), 0 0 110px rgba(37, 36, 17, 0.25), 0 0 100px rgba(37, 36, 17, 0.1);
-    }
-    100% {
-      opacity: 1;
-      text-shadow: 0 0 30px rgba(37, 36, 17, 0.6), 0 0 60px rgba(37, 36, 17, 0.45), 0 0 110px rgba(37, 36, 17, 0.25), 0 0 100px rgba(37, 36, 17, 0.1);
-    }
-  }
-  @keyframes text-flicker-in-glow {
     0% {
       opacity: 0;
     }

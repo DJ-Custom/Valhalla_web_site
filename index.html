@@ -5,34 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valhalla Gym</title>
     <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/loginFormStyle.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&family=Lexend&family=Staatliches&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="/assets/Images/Icon-Valhalla.png">
 </head>
 <body>
     <header class="nav">
     <div class="navbar">
-        <img src="/assets/Images/Valhalla_logo.png" alt="" class="logo">
+        <img src="/assets/Images/Icon-Valhalla.png" alt="" class="logo">
         <div>
-            <a href="#about">About</a>
+            <a href="#about">Acerca</a>
             <a href="#instalaciones">Instalaciones</a>
-            <a href="#programa_de_entrenamiento">Programa de Entrenamiento</a>
+            <a href="#programa_de_entrenamiento">Programas</a>
         </div>
         <button id="showLogin">Iniciar Sesión</button>
     </div>
     
     <div id="loginForm">
+        <form>
         <h2>Formulario de Inicio de Sesión</h2>
         <input type="text" id="username" placeholder="Usuario" required>
         <div class="password-container">
             <input type="password" id="password" placeholder="Contraseña" required>
             <span class="toggle-password" onclick="togglePassword()">👁️</span>
         </div>
-        <button id="loginButton">Iniciar Sesión</button>
+        <button id="loginButton">Reconocer</button>
+        </form>
     </div>
 
     <div id="redirectButton" style="display:none;">
-        <button onclick="window.location.href='private.html'">Ir al Gym</button>
+        <button onclick="window.location.href='private.html'" class="priv_btn">Ir a entorno</button>
     </div>
 </header>
 <section class="home">
