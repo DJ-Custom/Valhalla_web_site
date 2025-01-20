@@ -147,3 +147,5 @@ document.addEventListener('DOMContentLoaded', () => {
     displayedCommentsCount = increment; // Start with the first increment of comments
     loadComments();
 });
+
+//boxes animation
