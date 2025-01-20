@@ -7,7 +7,9 @@
     margin: 0;
     font-family: "Staatliches", serif;
 }
-body { font-family: Arial, sans-serif; margin: 0; }
+body { 
+  font-family: Arial, sans-serif; margin: 0; 
+}
 
 /*Navbar*/
 form {
@@ -62,7 +64,6 @@ form {
   border: none;
   padding: 12px;
   margin-right: 2rem;
-  margin-top: 1rem;
   transition: ease .3S;
 }
 #showLogin:hover {
@@ -82,9 +83,7 @@ form {
     width: 100%;
     background: rgba(230, 215, 18, 0.2);
 }
-#loginForm h2{
-  color: var(--secondary-color);
-}
+
 #loginButton, .priv_btn { 
   padding: 12px;
   margin-bottom: 1rem;
@@ -105,6 +104,27 @@ form {
     z-index: 50;
 }
 @media (max-width: 600px){
+  .nav input{
+    padding: 7px 2px;
+    text-align: center;
+    margin: 6px;
+    margin-right: 0;
+  }
+  .nav input::placeholder{
+    font-size: 10px;
+  }
+  #loginForm h2{
+    margin-top: -1rem;
+    font-size: 2rem;
+    color: var(--secondary-color);
+  }
+  #loginButton{
+    font-size: 8px;
+    padding: 8px 12px;
+    margin: 0;
+    margin-bottom: 1rem;
+    margin-top: 5px;
+  }
   form {
     align-items: center;
     justify-items: center;
@@ -112,17 +132,26 @@ form {
   }
 #showLogin {
   padding: 7px 10px;
-  margin-right: 0.2rem;
-  margin-top: 1rem;
+  margin-right: 0.6rem;
+  margin-top: 7px;
   font-size: 10px;
 }
+.toggle-password { 
+  font-size: 10px;
+  position: absolute; 
+  right: 10px; 
+  top: 50%; 
+  transform: 
+  translateY(-50%); 
+  cursor: pointer; }
+
 .navbar .logo {
   width: 45px;
   margin-top: 0.7rem;
 }
 .navbar a {
   margin: 0 5px;
-  font-size: 10px;
+  font-size: 13px;
 }
 .navbar a:hover {
   transform: scale(1.4);
@@ -184,13 +213,55 @@ h2{
   margin-left: 3rem;
   letter-spacing: 4px;
   font-style: italic;
-  /* -webkit-animation: text-flicker-in-glow 4s linear both;
-  animation: text-flicker-in-glow 4s linear both; */
+  -webkit-animation: text-flicker-in-glow 4s linear both;
+  animation: text-flicker-in-glow 4s linear both;
 }
 @media (max-width: 600px){
+  .home {
+    height: 60vh;
+  }
   .h1 {
     font-size: 5rem;
     margin-left: 0.7rem;
+  }
+  }
+
+
+          /* about */
+.about {
+  text-align: center;
+  justify-content: center;
+  justify-items: center;
+  height: auto;
+}
+.about .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+}
+.about p{
+  margin-top: 2rem;
+  color: white;
+  width: 65%;
+  text-align: justify;
+  text-align-last:  center;
+  font-size: 20px;
+
+}
+.about .row {
+  width: 300px;
+  height: 300px;
+  border: 2px solid white;
+  margin: 2rem;
+}
+@media (max-width: 600px){
+  .about {
+    height: auto;
+  }
+  .about p{
+    font-size: 14px;
   }
 }
 @-webkit-keyframes text-flicker-in-glow {
@@ -443,3 +514,57 @@ h2{
       text-shadow: 0 0 30px rgba(37, 36, 17, 0.6), 0 0 60px rgba(37, 36, 17, 0.45), 0 0 110px rgba(37, 36, 17, 0.25), 0 0 100px rgba(37, 36, 17, 0.1);
     }
   }
+
+            /* training */
+.training .container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-items: center;
+  justify-content: center;
+}
+.training h2 {
+  margin-bottom: 2rem;
+}
+.training .container .row{
+  border: 2px solid white;
+  width: 25%;
+  height: 80vh;
+  margin: 2rem;
+}
+
+
+            /* instalaciones */
+.instalaciones .container .row {
+  border: 2px solid white;
+  width: 300px;
+  height: 300px;
+  margin: 2rem;
+  transition: ease .3S;
+}
+.instalaciones .container .row:hover{
+  transform: scale(1.1);
+  cursor: pointer;
+  box-shadow: 0 0 13px var(--primary-color);
+}
+.instalaciones .container{
+  display: flex;
+  flex-wrap: wrap;
+}
+.instalaciones .load_videos {
+  background: var(--primary-color);
+  border: none;
+  padding: 12px 25px;
+  margin-right: 2rem;
+  transition: ease .3S;
+  text-decoration: none;
+  color: var(--secondary-color);
+  font-size: 1.2rem;
+  margin: 2rem;
+}
+.instalaciones .load_videos:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+  box-shadow: 1px 1px 10px rgb(109, 107, 10);
+  background: black;
+  color: var(--primary-color);
+}
