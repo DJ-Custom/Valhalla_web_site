@@ -1,151 +1,146 @@
-document.getElementById('showLogin').onclick = function() {
-    const loginForm = document.getElementById('loginForm');
-    // Toggle the login form visibility
-    if (loginForm.style.display === 'block') {
-        loginForm.style.display = 'none';
-    } else {
-        loginForm.style.display = 'block';
-    }
-};
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('showLogin').onclick = function() {
+        const loginForm = document.getElementById('loginForm');
+        // Toggle the login form visibility
+        if (loginForm.style.display === 'block') {
+            loginForm.style.display = 'none';
+        } else {
+            loginForm.style.display = 'block';
+        }
+    };
 
-document.getElementById('loginButton').onclick = function(event) {
-    event.preventDefault(); // Prevent the default form submission behavior
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
+    function showCustomAlert(message) {
+        const alertBox = document.createElement('div');
+        alertBox.textContent = message;
+        alertBox.style.position = 'fixed';
+        alertBox.style.top = '30px';
+        alertBox.style.left = '50%';
+        alertBox.style.transform = 'translateX(-50%)';
+        alertBox.style.backgroundColor = 'var(--primary-color)';
+        alertBox.style.color = 'var(--secondary-color)';
+        alertBox.style.padding = '10px 20px';
+        alertBox.style.borderRadius = '5px';
+        alertBox.style.zIndex = '1000';
+        alertBox.style.fontFamily = 'var(--font-family)';
+        document.body.appendChild(alertBox);
+
+        setTimeout(() => {
+            alertBox.remove();
+        }, 3000); // Remove the alert after 3 seconds
+    }
+
+    function togglePassword() {
+        const passwordInput = document.getElementById('password');
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        document.querySelector('.toggle-password').textContent = type === 'password' ? '👁️' : '🙈';
+    }
+
+    // user and comments
+    let currentUser = null; // Guarda el usuario actual
+    let comments = JSON.parse(localStorage.getItem('comments')) || []; // Cargar los comentarios desde localStorage
+    let visibleComments = 6; // Número de comentarios a mostrar
+
+    // Cargar los usuarios desde credentials.json
+    let users = []; // Asegúrate de que esta declaración esté solo una vez
 
     fetch('credentials.json')
         .then(response => response.json())
         .then(data => {
-            const user = data.users.find(user => user.username === username && user.password === password);
-            if (user) {
-                // Redirect to private.html if credentials are correct
-                window.location.href = 'private_final.html';
+            users = data.users;
+        });
+
+    // Función para el inicio de sesión
+    function loginUser(username, password) {
+        const user = users.find(u => u.username === username && u.password === password);
+
+        if (user) {
+            currentUser = user.username;
+            alert(`Bienvenido, ${currentUser}!`);
+            // Guardar el usuario en localStorage
+            localStorage.setItem('currentUser', currentUser);
+            // Redirigir a private_final.html
+            window.location.href = 'private_final.html';
+        } else {
+            alert("Credenciales incorrectas. Inténtalo de nuevo.");
+        }
+    }
+
+    // Función para manejar el formulario de inicio de sesión en index.html
+    if (window.location.pathname.includes('index.html')) {
+        // Manejar el formulario de inicio de sesión
+        document.getElementById('loginForm').addEventListener('submit', (event) => {
+            event.preventDefault(); // Evitar el refresco de la página
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+            
+            if (username && password) {
+                loginUser(username, password);
             } else {
-                showCustomAlert('Credenciales incorrectas');
+                alert('Por favor ingresa usuario y contraseña.');
             }
         });
-};
 
-function showCustomAlert(message) {
-    const alertBox = document.createElement('div');
-    alertBox.textContent = message;
-    alertBox.style.position = 'fixed';
-    alertBox.style.top = '30px';
-    alertBox.style.left = '50%';
-    alertBox.style.transform = 'translateX(-50%)';
-    alertBox.style.backgroundColor = 'var(--primary-color)';
-    alertBox.style.color = 'var(--secondary-color)';
-    alertBox.style.padding = '10px 20px';
-    alertBox.style.borderRadius = '5px';
-    alertBox.style.zIndex = '1000';
-    alertBox.style.fontFamily = 'var(--font-family)';
-    document.body.appendChild(alertBox);
+    } else if (window.location.pathname.includes('private_final.html')) {
+        // Verificar si el usuario está autenticado en private_final.html
+        currentUser = localStorage.getItem('currentUser');
+        if (!currentUser) {
+            window.location.href = 'index.html'; // Redirigir si no está autenticado
+        } else {
+            document.getElementById('user').innerText = currentUser; // Mostrar nombre de usuario
+            renderComments(); // Mostrar comentarios
+        }
 
-    setTimeout(() => {
-        alertBox.remove();
-    }, 3000); // Remove the alert after 3 seconds
-}
-
-function togglePassword() {
-    const passwordInput = document.getElementById('password');
-    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-    passwordInput.setAttribute('type', type);
-    document.querySelector('.toggle-password').textContent = type === 'password' ? '👁️' : '🙈';
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    const commentForm = document.getElementById('comment-form');
-    const commentsList = document.getElementById('comments-list');
-    const loadMoreButton = document.getElementById('load-more');
-    const loadLessButton = document.getElementById('load-less');
-    const filterSelect = document.getElementById('filter');
-
-    let comments = [];
-    let displayedCommentsCount = 0;
-    const increment = 6; // Number of comments to load at a time
-
-    // Cargar comentarios desde el archivo JSON
-    function loadComments() {
-        fetch('comments.json')
-            .then(response => response.json())
-            .then(data => {
-                comments = data; // Store all comments
-                displayComments();
-            });
-    }
-
-    // Mostrar comentarios en la lista
-    function displayComments() {
-        commentsList.innerHTML = '';
-        const commentsToDisplay = comments.slice(0, displayedCommentsCount);
-        commentsToDisplay.forEach(comment => {
-            const commentDiv = document.createElement('div');
-            commentDiv.classList.add('comment');
-            commentDiv.innerHTML = `<strong style="color: ${getRandomColor()}">${comment.username}</strong> 
-                                    <span style="float: right;">${comment.date}</span>
-                                    <p>${comment.text}</p>`;
-            commentsList.appendChild(commentDiv);
-        });
-
-        // Toggle button visibility
-        loadLessButton.style.display = displayedCommentsCount > increment ? 'block' : 'none';
-        loadMoreButton.style.display = displayedCommentsCount < comments.length ? 'block' : 'none';
-    }
-
-    // Obtener un color aleatorio para el nombre del usuario
-    function getRandomColor() {
-        const colors = ['#FF5733', '#33FF57', '#3357FF', '#FF33A1', '#FFBD33'];
-        return colors[Math.floor(Math.random() * colors.length)];
-    }
-
-    // Manejar el envío del formulario
-    commentForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const username = document.getElementById('username').value; // Get username from hidden input
-        const commentText = document.getElementById('comment').value;
-        const date = new Date().toLocaleString();
-
-        const newComment = { username, text: commentText, date };
-        console.log('New Comment:', newComment); // Log the new comment
-
-        // Save the new comment in the comments array
-        fetch('comments.json', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(newComment)
-        })
-        .then(response => {
-            if (response.ok) {
-                comments.push(newComment); // Add to local comments array
-                displayComments(); // Update the display immediately
-                commentForm.reset(); // Reset the form
+        // Agregar un nuevo comentario
+        document.getElementById('submit-btn').addEventListener('click', () => {
+            const commentInput = document.getElementById('comment');
+            const text = commentInput.value.trim();
+            if (text) {
+                const newComment = {
+                    username: currentUser,
+                    text,
+                    date: new Date().toISOString(),
+                };
+                comments.unshift(newComment); // Añadir al inicio del array
+                localStorage.setItem('comments', JSON.stringify(comments));
+                commentInput.value = '';
+                renderComments(); // Volver a renderizar los comentarios
             } else {
-                showCustomAlert('Error al guardar el comentario');
+                alert('Por favor escribe un comentario antes de enviarlo.');
             }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            showCustomAlert('Error al guardar el comentario');
         });
-    });
 
-    // Load more comments
-    loadMoreButton.addEventListener('click', () => {
-        displayedCommentsCount += increment;
-        displayComments();
-    });
+        // Cargar más comentarios
+        document.getElementById('load-more-btn').addEventListener('click', () => {
+            visibleComments += 6;
+            renderComments();
+        });
 
-    // Load less comments
-    loadLessButton.addEventListener('click', () => {
-        displayedCommentsCount = Math.max(0, displayedCommentsCount - increment);
-        displayComments();
-    });
+        // Cargar menos comentarios
+        document.getElementById('load-less-btn').addEventListener('click', () => {
+            visibleComments = Math.max(6, visibleComments - 6);
+            renderComments();
+        });
+    }
 
-    // Cargar comentarios al inicio
-    displayedCommentsCount = increment; // Start with the first increment of comments
-    loadComments();
+    // Función para mostrar los comentarios
+    function renderComments() {
+        const commentList = document.getElementById('comment-list');
+        commentList.innerHTML = ''; // Limpiar la lista antes de mostrarla
+        const displayComments = comments.slice(0, visibleComments);
+
+        displayComments.forEach(comment => {
+            const div = document.createElement('div');
+            div.classList.add('comment');
+            div.innerHTML = `
+                <div class="meta">${comment.username} - ${new Date(comment.date).toLocaleString()}</div>
+                <div>${comment.text}</div>
+            `;
+            commentList.appendChild(div);
+        });
+
+        // Mostrar los botones de cargar más/menos según sea necesario
+        document.getElementById('load-more-btn').style.display = visibleComments < comments.length ? 'inline-block' : 'none';
+        document.getElementById('load-less-btn').style.display = visibleComments > 6 ? 'inline-block' : 'none';
+    }
 });
-
-//boxes animation

@@ -10,6 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&family=Lexend&family=Staatliches&display=swap" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="/assets/Images/Icon-Valhalla.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src="assets/script.js"></script>
 </head>
 <body>
     <header class="nav">
@@ -25,14 +27,14 @@
     </div>
     
     <div id="loginForm">
-        <form>
-        <h2>Formulario de Inicio de Sesión</h2>
-        <input type="text" id="username" placeholder="Usuario" required>
-        <div class="password-container">
-            <input type="password" id="password" placeholder="Contraseña" required>
-            <span class="toggle-password" onclick="togglePassword()">👁️</span>
-        </div>
-        <button id="loginButton">Reconocer</button>
+        <form id="loginFormElement">
+            <h2>Formulario de Inicio de Sesión</h2>
+            <input type="text" id="username" placeholder="Usuario" required>
+            <div class="password-container">
+                <input type="password" id="password" placeholder="Contraseña" required>
+                <span class="toggle-password" onclick="togglePassword()">👁️</span>
+            </div>
+            <button type="submit" id="loginButton">Reconocer</button>
         </form>
     </div>
 
@@ -46,13 +48,23 @@
 <section class="about" id="about">
 <h2>¿Quiénes somos?</h2>
 <div class="container">
-<div id="row" class="box"></div>
+<div id="row" class="box">
+    <p>Coach Daniel</p>
+    <div class="cover">
+        <img src="/assets/Images/3d-gym-equipment_23-2151114163.avif" alt="">
+    </div>
+</div>
 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint similique eius aut animi quo natus, consectetur odio, assumenda optio adipisci aliquid itaque obcaecati veritatis nisi fugiat, maiores maxime! Ipsum tempore optio aliquid laborum rem fugit ipsa nulla aliquam debitis corrupti.</p>
 </div>
 <h2>¿Qué buscamos?</h2>
 <div class="container">
 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe quo facere reprehenderit eligendi, maiores sit necessitatibus fugiat quia iure accusamus eveniet velit explicabo harum sequi possimus sint voluptatum delectus perspiciatis. Ducimus consequuntur possimus consectetur, tenetur quasi aperiam? Eveniet quas laborum ullam.</p>
-<div id="row" class="box"></div>
+<div id="row" class="box">
+    <p>Coach Mario</p>
+    <div class="cover">
+        <img src="/assets/Images/3d-gym-equipment_23-2151114163.avif" alt="">
+    </div>
+</div>
 </div>
 </section>
 <section class="training" id="programa_de_entrenamiento">
@@ -80,9 +92,25 @@
 <a href="#" class="load_videos">YouTube</a>
 </div>
 </section>
-<footer>
-    Valhalla Gym
-</footer>
     <script src="assets/script.js"></script>
+<footer>
+    <div class="footer-container">
+        <div class="social-media">
+            <h3>Síguenos en:</h3>
+            <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.whatsapp.com" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+        <div class="contact-info">
+            <h3>Contacto:</h3>
+            <p>Email: contacto@valhallagym.com</p>
+            <p>Teléfono: +123 456 7890</p>
+            <p>Ubicación: Calle Valhalla, 123, Ciudad Vikinga</p>
+        </div>
+        <div class="trademark">
+            <p>&copy; 2023 Valhalla Gym. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</footer>
 </body>
 </html>

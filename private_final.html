@@ -9,7 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&family=Lexend&family=Staatliches&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="/assets/Images/Icon-Valhalla.png">
+    <link rel="icon" type="image/svg+xml" href="assets/Images/Icon-Valhalla.png">
+    <script src="assets/script.js" defer></script>
 </head>
 <body>
     <header class="nav">
@@ -29,16 +30,45 @@
 <section class="entorno">
     <h1>Bienvenido al entorno Valhalla</h1>
     <p>Esta es una sección protegida del sitio web.</p>
+    <button id="showLogin">Iniciar Sesión</button>
     <a href="index.html">Cerrar sesión</a>
 </section>
-    <section id="comments-section">
+<section class="comentarios">
+    <div class="comment-box">
+        <!-- Área de texto para ingresar un comentario -->
+        <textarea id="comment" placeholder="Escribe un comentario..." rows="4" style="width: 100%;"></textarea>
+        <button id="submit-btn">Enviar Comentario</button>
+    </div>
+
+    <!-- Sección de visualización de comentarios -->
+    <div class="comments">
         <h2>Comentarios</h2>
-        <form id="comment-form">
-            <textarea id="comment" placeholder="Escribe tu comentario..." required></textarea>
-            <button type="submit">Publicar Comentario</button>
-        </form>
-        <div id="comments-list"></div>
-    </section>
-    <script src="assets/comments_script.js"></script>
+        <div id="comment-list"></div>
+        <button id="load-more-btn">Cargar más</button>
+        <button id="load-less-btn">Cargar menos</button>
+    </div>
+</section>
+    <script src="assets/script.js"></script>
+</body>
+    <footer>
+        <div class="footer-container" style="display: flex; justify-content: space-between; align-items: center; padding: 20px; font-size: 1.2em;">
+            <div class="contact-info" style="flex: 1;">
+                <h3>Contacto:</h3>
+                <p>Email: contacto@valhallagym.com</p>
+                <p>Teléfono: +506 456 7890</p>
+                <p>Ubicación: Complejo el muro
+                </p>
+            </div>
+            <div class="social-media" style="flex: 1; text-align: right;">
+                <h3>Síguenos en:</h3>
+                <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.whatsapp.com" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+            <div class="trademark" style="flex: 1; text-align: center;">
+                <p>&copy; 2023 Valhalla Gym. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
