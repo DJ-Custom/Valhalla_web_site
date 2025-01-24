@@ -19,6 +19,7 @@
   "homepage": "https://github.com/DavidAlpizar04/Valhalla_web_site#readme",
   "description": "",
   "dependencies": {
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "php-express": "^0.0.3"
   }
 }
