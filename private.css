@@ -50,7 +50,14 @@ h1 {
   font-size: 3rem;
   color: white;
 }
-
+@media (max-width: 600px){
+  h2{
+    font-size: 3rem;
+  }
+  h3{
+    font-size: 2rem;
+  }
+}
   /*Navbar*/
   form {
     display: flex;
@@ -132,24 +139,34 @@ h1 {
     .nav input::placeholder{
       font-size: 10px;
     }
-    form {
-      align-items: center;
-      justify-items: center;
-      justify-content: center;
-    }
   .navbar .logo {
     width: 45px;
-    margin-top: 0.7rem;
-  }
-  .navbar a {
-    margin: 0 1px;
-    font-size: 17px;
+    margin: 0;
   }
   .navbar a:hover {
-    transform: scale(1.4);
+    transform: scale(1.1);
   }
   .nav {
-    height: 5rem;
+    height: auto;
+    z-index: 2000;
+    width: 100%;
+  }
+  .btn-primary{
+    position: relative;
+    border: none;
+    padding: 9px 20px;
+    transition: ease .3S;
+    text-decoration: none;
+    color: black; /* Ensure the text color is black */
+    font-size: 0.7rem;
+    margin-right: 1rem;
+  }
+  .btn-primary:hover{
+    transform: scale(1.1);
+  }
+  .nav .nav-enlaces {
+    font-size: 11px;
+    margin: 0 8px;
   }
   }
   @media (min-width: 601px) and (max-width: 1024px){
@@ -216,6 +233,23 @@ h1 span:last-child {
       exit 0% exit 80%,
       exit 20% exit 60%;
 }  
+@media (max-width: 600px){
+  .home{
+    height: 70vh;
+  }
+  h1{
+    font-size: 2rem;
+    position: relative;
+    top: 13rem;
+    left: 0;
+    right: 0;
+    bottom: 0; 
+    z-index: 2; 
+  }
+  h1 span{
+    font-size: 2.7rem;
+  }
+}
 @keyframes scale-up {
   to {scale: 1.5;}
 }
@@ -228,6 +262,9 @@ h1 span:last-child {
   min-height: 90vh;
   background-color: #bbbbbb;
   background-image: url("data:image/svg+xml,%3Csvg width='50' height='50' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20.5V18H0v-2h20v-2H0v-2h20v-2H0V8h20V6H0V4h20V2H0V0h22v20h2V0h2v20h2V0h2v20h2V0h2v20h2V0h2v20h2v2H20v-1.5zM0 20h2v20H0V20zm4 0h2v20H4V20zm4 0h2v20H8V20zm4 0h2v20h-2V20zm4 0h2v20h-2V20zm4 4h20v2H20v-2zm0 4h20v2H20v-2zm0 4h20v2H20v-2zm0 4h20v2H20v-2z' fill='%23383838' fill-opacity='0.24' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+.salud h2 {
+  color: var(--secondary-color);
 }
 .salud #player-container {
   position: relative;
@@ -242,6 +279,7 @@ h1 span:last-child {
   left: 0;
   width: 70%;
   height: 0%;
+  border: 2px solid var(--primary-color);
 }
 .salud button {
   margin: 30px 200px;
@@ -268,6 +306,14 @@ h1 span:last-child {
 button:active {
   transform: translateY(5px);
   box-shadow: 0px 0px 0px 0px #0c0b1d;
+}
+@media (max-width: 600px){
+  .salud {
+    height: 50vh;
+  }
+  .salud button{
+    margin: 30px 50px;
+  }
 }
 
                   /* Comentarios */
@@ -342,6 +388,14 @@ button:hover {
 .comentario form, .respuesta form {
   margin-top: 10px;
 }
+@media (max-width: 600px){
+  .comentario, .respuesta {
+    max-width: 300px;
+  }
+  .comentar {
+    max-width: 300px;
+  }
+}
 
                   /* Footer */
                   
@@ -376,8 +430,21 @@ button:hover {
       font-size: 14px;
   }
   @media (max-width: 600px){
-  
-  }
+    h4{
+      font-size: 0.8rem;
+      margin: 0;
+    }
+    p {
+      font-size: 0.6rem;
+    }
+    .logout {
+      width: 100%;
+      height: auto;
+    }
+    .logout a{
+      padding: 2rem;
+    }
+    }
   
   @keyframes show-box {
     from {

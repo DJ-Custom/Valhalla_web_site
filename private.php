@@ -19,6 +19,7 @@ if (!isset($_SESSION['id'])) {
     <link href="https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&family=Lexend&family=Staatliches&display=swap" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="/Images/Icon-Valhalla.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src="https://www.youtube.com/iframe_api"></script> <!-- Added YouTube IFrame API -->
     <script src="assets/script.js"></script>
 </head>
 <body>
@@ -30,7 +31,7 @@ if (!isset($_SESSION['id'])) {
             <a class="nav-enlaces" href="#salud">Salud</a>
             <a class="nav-enlaces" href="#comentarios">Comentarios</a>
         </div>
-        <a href="index.php" class="btn btn-primary">Volver</a>
+        <a href="index.php" class="btn btn-primary">Volver⚔️</a>
         </div>
 </header>
 <section id="home" class="home">
@@ -47,7 +48,7 @@ if (!isset($_SESSION['id'])) {
 </section>
 <section id="comentarios" class="comentarios">
     <h2>Comunidad Valhalla</h2>
-        <form method="POST" action="">
+        <form method="POST" action="" class="comentar">
             <textarea name="comentario" placeholder="Escribe un comentario..." required></textarea>
             <button type="submit" name="comentar">Comentar</button>
         </form>
@@ -138,4 +139,5 @@ if (!isset($_SESSION['id'])) {
 </footer>
 
 </body>
+<script src="/script.js"></script>
 </html>

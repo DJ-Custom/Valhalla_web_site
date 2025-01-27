@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$database = "login_user";
+$database = "user_tecnofibras";
 
 // Crear conexión
 $conn = new mysqli($servername, $username, $password, $database);

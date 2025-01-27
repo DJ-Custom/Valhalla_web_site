@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-<link rel="stylesheet" href="forms.css">
+    <link rel="stylesheet" href="forms.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&family=Lexend&family=Staatliches&display=swap" rel="stylesheet">
@@ -46,13 +46,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="container">
         <form method="POST" action="">
             <label for="usuario">Usuario:</label>
-            <input type="text" id="usuario" name="usuario" required>
+            <input class="input" type="text" id="usuario" name="usuario" required>
             <br>
+            <div class="division"></div>
             <label for="clave">Clave:</label>
-            <input type="password" id="clave" name="clave" required>
+            <input class="input" type="password" id="clave" name="clave" required>
             <br>
-            <input class="btn-form" type="submit" value="Ingresar">
-            <a class="btn-form" href="/index.php">Volver</a>
+            <input class="btn-form" type="submit" value="🪓Ingresar">
+            <a class="btn-form" href="/index.php">Volver⚔️</a>
         </form>
     </div>
     <img src="/Images/Icon-Valhalla.png" alt="">

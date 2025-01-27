@@ -54,7 +54,7 @@ input[type="submit"]:hover {
     padding-top: 10px;
 }
 :root{
-    --primary-color: rgb(230, 209, 18);
+  --primary-color: rgb(230, 209, 18);
     --secondary-color: #141414;
     --font-family: "Staatliches", serif;
   }
@@ -68,14 +68,6 @@ input[type="submit"]:hover {
   }
   
   /*Navbar*/
-  form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    
-  }
   .nav {
       background-color: #000000;
       width: 100%; /* Ensure full width */
@@ -148,33 +140,34 @@ input[type="submit"]:hover {
     .nav input::placeholder{
       font-size: 10px;
     }
-    form {
-      align-items: center;
-      justify-items: center;
-      justify-content: center;
-    }
-  .toggle-password { 
-    font-size: 10px;
-    position: absolute; 
-    right: 10px; 
-    top: 50%; 
-    transform: 
-    translateY(-50%); 
-    cursor: pointer; }
-  
   .navbar .logo {
     width: 45px;
-    margin-top: 0.7rem;
-  }
-  .navbar a {
-    margin: 0 5px;
-    font-size: 13px;
+    margin: 0;
   }
   .navbar a:hover {
-    transform: scale(1.4);
+    transform: scale(1.1);
   }
   .nav {
-    height: 5rem;
+    height: auto;
+    z-index: 2000;
+    width: 100%;
+  }
+  .btn-primary{
+    position: relative;
+    border: none;
+    padding: 9px 15px;
+    transition: ease .3S;
+    text-decoration: none;
+    color: black; /* Ensure the text color is black */
+    font-size: 0.7rem;
+    margin-right: 1rem;
+  }
+  .btn-primary:hover{
+    transform: scale(1.1);
+  }
+  .nav .nav-enlaces {
+    font-size: 11px;
+    margin: 0 8px;
   }
   }
   @media (min-width: 601px) and (max-width: 1024px){
@@ -230,22 +223,28 @@ input[type="submit"]:hover {
   }
   .h1 {
     position: relative;
+    max-width: 100%;
     top: 26rem;
     left: 0;
     right: 0;
     bottom: 0; 
     z-index: 2; 
-    font-size: 11rem;
+    font-size: 10rem;
     color: var(--primary-color);
     letter-spacing: 4px;
     font-style: italic;
     -webkit-animation: text-flicker-in-glow 4s linear both;
     animation: text-flicker-in-glow 4s linear both;
+    padding: 0;
+    margin: 0;
+    top: 15rem;
   }
   .h1:first-child {
     animation: fade-away both linear;
     animation-timeline: --scroll;
     animation-range: exit 20% exit 70%;
+    padding: 0;
+    margin: 0;
   }
   .h1:last-child {
     animation: 
@@ -255,16 +254,22 @@ input[type="submit"]:hover {
       animation-range:
         exit 0% exit 80%,
         exit 20% exit 60%;
+        padding: 0;
+        margin: 0;
   }    
   @media (max-width: 600px){
     .home {
       height: 70vh;
-    }
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      justify-items: center;
+       }
     .h1 {
       font-size: 4rem;
       padding: 0;
+      
       margin: 0;
-      margin-top: -10rem;
       width: 100%;
     }
     }
@@ -383,6 +388,7 @@ input[type="submit"]:hover {
       width: 40%;
       margin-top: 0;
     }
+
     .about #row {
       width: 126px;
       height: 126px;
@@ -557,15 +563,15 @@ input[type="submit"]:hover {
   }
   .instalaciones .container .row {
     border: 2px solid white;
-    width: 500px;
-    height: 500px;
-    margin: 2rem;
+    width: 400px;
+    height: 400px;
+    margin: 1rem;
     transition: ease .3S;
   }
   .instalaciones-img {
     object-fit: cover;
-    width: 500px;
-    height: 500px;
+    width: 400px;
+    height: 400px;
   }
   .instalaciones .row {
     object-fit: cover;
@@ -575,7 +581,6 @@ input[type="submit"]:hover {
     cursor: pointer;
     box-shadow: 0 0 13px var(--primary-color);
   }
-
   .instalaciones .container{
     display: flex;
     flex-wrap: wrap;
@@ -600,7 +605,6 @@ input[type="submit"]:hover {
     background: black;
     color: var(--primary-color);
   }
-  
   .Lol {
     padding: 4rem;
   }
@@ -618,9 +622,14 @@ input[type="submit"]:hover {
       background-image: url("data:image/svg+xml,%3Csvg width='50' height='50' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20.5V18H0v-2h20v-2H0v-2h20v-2H0V8h20V6H0V4h20V2H0V0h22v20h2V0h2v20h2V0h2v20h2V0h2v20h2V0h2v20h2v2H20v-1.5zM0 20h2v20H0V20zm4 0h2v20H4V20zm4 0h2v20H8V20zm4 0h2v20h-2V20zm4 0h2v20h-2V20zm4 4h20v2H20v-2zm0 4h20v2H20v-2zm0 4h20v2H20v-2zm0 4h20v2H20v-2z' fill='%23383838' fill-opacity='0.24' fill-rule='evenodd'/%3E%3C/svg%3E");
     }
     .instalaciones .container .row{
-      width: 95px;
-      height:95px;
-      margin: 0.7rem 0.3rem;
+      width: 100px;
+      height:100px;
+      margin: 0.4rem 0.4rem;
+      object-fit: cover;
+    } 
+    .instalaciones-img{
+      width: 100px;
+      height:100px;
     } 
   
   .instalaciones .load_videos {
@@ -664,7 +673,13 @@ input[type="submit"]:hover {
       font-size: 14px;
   }
   @media (max-width: 600px){
-  
+  h4{
+    font-size: 0.8rem;
+    margin: 0;
+  }
+  p {
+    font-size: 0.6rem;
+  }
   }
   
   @keyframes show-box {

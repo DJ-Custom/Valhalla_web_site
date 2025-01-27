@@ -8,7 +8,6 @@ include 'db.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valhalla Gym</title>
-    <link rel="stylesheet" href="assets/style.css">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,7 +26,7 @@ include 'db.php';
             <a class="nav-enlaces" href="#instalaciones">Instalaciones</a>
             <a class="nav-enlaces" href="#programa_de_entrenamiento">Programas</a>
         </div>
-        <a href="login.php" class="btn btn-primary">Entorno</a>
+        <a href="login.php" class="btn btn-primary">Entorno🛡️</a>
         </div>
     </header>
 <section class="home" id="home">
@@ -68,31 +67,31 @@ include 'db.php';
 <h2>Nuestras Instalaciones</h2>
 <div class="container">
     <div class="row">
-    <img class="instalaciones-img" src="/Images/Galeria/1.jpeg" alt="">
+    <img class="instalaciones-img" src="/Images/Galeria/7.jpeg" alt="">
     </div>
     <div class="row">
     <img class="instalaciones-img" src="/Images/Galeria/2.jpeg" alt="">
     </div>
     <div class="row">
-    <img class="instalaciones-img" src="/Images/Galeria/3.jpeg" alt="">
+    <img class="instalaciones-img" src="/Images/Galeria/9.jpeg" alt="">
     </div>
     <div class="row">
     <img class="instalaciones-img" src="/Images/Galeria/4.jpeg" alt="">
     </div>
     <div class="row">
-    <img class="instalaciones-img" src="/Images/Galeria/5.jpeg" alt="">
+    <img class="instalaciones-img" src="/Images/Galeria/10.jpeg" alt="">
     </div>
     <div class="row">
-    <img class="instalaciones-img" src="/Images/Galeria/7.jpeg" alt="">
+    <img class="instalaciones-img" src="/Images/Galeria/1.jpeg" alt="">
     </div>
     <div class="row">
     <img class="instalaciones-img" src="/Images/Galeria/8.jpeg" alt="">
     </div>
     <div class="row">
-    <img class="instalaciones-img" src="/Images/Galeria/9.jpeg" alt="">
+    <img class="instalaciones-img" src="/Images/Galeria/3.jpeg" alt="">
     </div>
     <div class="row">
-    <img class="instalaciones-img" src="/Images/Galeria/10.jpeg" alt="">
+    <img class="instalaciones-img" src="/Images/Galeria/5.jpeg" alt="">
     </div>
 </div>
 <div class="Lol">
