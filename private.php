@@ -17,15 +17,15 @@ if (!isset($_SESSION['id'])) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&family=Lexend&family=Staatliches&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="/Images/Icon-Valhalla.png">
+    <link rel="icon" type="image/svg+xml" href="Images/Icon-Valhalla.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <script src="https://www.youtube.com/iframe_api"></script> <!-- Added YouTube IFrame API -->
-    <script src="assets/script.js"></script>
+    <script src="script.js"></script>
 </head>
 <body>
 <header class="nav">
         <div class="navbar">
-        <img src="/Images/Icon-Valhalla.png" alt="" class="logo">
+        <img src="Images/Icon-Valhalla.png" alt="" class="logo">
         <div>
             <a class="nav-enlaces" href="#home">Inicio</a>
             <a class="nav-enlaces" href="#salud">Salud</a>
@@ -139,5 +139,5 @@ if (!isset($_SESSION['id'])) {
 </footer>
 
 </body>
-<script src="/script.js"></script>
+<script src="script.js"></script>
 </html>

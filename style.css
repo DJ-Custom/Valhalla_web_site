@@ -54,7 +54,7 @@ input[type="submit"]:hover {
     padding-top: 10px;
 }
 :root{
-  --primary-color: rgb(230, 209, 18);
+  --primary-color: rgb(230, 226, 18);
     --secondary-color: #141414;
     --font-family: "Staatliches", serif;
   }
@@ -198,7 +198,7 @@ input[type="submit"]:hover {
   
   /*home*/
   .home {
-    background-image: url('../Images/background-valhalla.jpg');
+    background-image: url('Images/background-valhalla.jpg');
     background-size: cover;
     background-position: center;
     position: relative;
@@ -292,6 +292,7 @@ input[type="submit"]:hover {
   .about .container {
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
     justify-content: center;
     justify-items: center;
     align-items: center;
@@ -303,10 +304,47 @@ input[type="submit"]:hover {
     text-align: justify;
     text-align-last:  center;
     font-size: 28px;
-  
   }
-  
-  
+  .about p span{
+    color: var(--primary-color);
+    font-size: 44px;
+  }
+  .about .content {
+    display: flex;
+    flex-direction: row;
+  }
+    .ttl {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+  }
+  .ttl1{
+    width: 80px;
+    height: 80px;
+    background-image: url('Images/2.PNG');
+    background-size: contain;
+    background-position: center;
+    position: relative;
+    opacity: 0.9;
+    margin-top: 1rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
+  }
+  .ttl2{
+    width: 100px;
+    height: 80px;
+    background-image: url('Images/3.PNG');
+    background-size: contain;
+    background-position: center;
+    position: relative;
+    opacity: 0.9;
+    margin-top: 1rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
+  }
   .box{
     width: 500px;
     height: 500px;
@@ -538,11 +576,56 @@ input[type="submit"]:hover {
     margin-bottom: 2rem;
   }
   .training .container #row{
-    border: 2px solid white;
-    width: 25%;
-    height: 80vh;
+    border: 2px solid var(--primary-color);
+    width: 40%;
+    height: 100vh;
     margin: 2rem;
+    padding: 1rem;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
   }
+  .training .container #row h3{
+    font-size: 2.3rem;
+    color: white;
+    font-style: italic;
+    margin-bottom: 1rem;
+    }
+  .training .container #row h4{
+    font-size: 1.6rem;
+    color: var(--primary-color);
+  }
+  .training .container #row p{
+    font-size: 14px;
+    color: white;
+    margin-bottom: 0.5rem;
+  }
+
+.img-program1{
+  width: 100px;
+  height: 145px;
+  background-image: url('Images/1.PNG');
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  opacity: 0.9;
+  right: 42%;
+  left: 42%;
+  bottom: 1rem;
+}
+.img-program2{
+  width: 100px;
+  height: 145px;
+  background-image: url('Images/8.PNG');
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  bottom: 1rem;
+  right: 42%;
+  left: 42%;
+  opacity: 0.9;
+
+}
 
   @media (max-width: 600px){
     .training {
@@ -700,4 +783,13 @@ input[type="submit"]:hover {
   }
   i {
     color: white;
+  }
+  .lolito {
+    width: 300px;
+    height: 300px;
+    border: 2px solid white;
+    background-image: url('Images/background-valhalla.jpg');
+    background-size: cover;
+    background-position: center;
+
   }
